@@ -1,1 +1,4 @@
 rootProject.name = 'learn-english'
+
+include 'api-service'
+include 'view-service'
