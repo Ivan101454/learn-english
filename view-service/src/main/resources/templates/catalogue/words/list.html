@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <title>English Words</title>
+</head>
+<body>
+<table class="table">
+    <thead class="table__header">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">word</th>
+        <th scope="col">definition</th>
+        <th scope="col">note</th>
+    </tr>
+    </thead>
+    <tbody class="table__body">
+    <tr data-th-each="word, i : ${words}">
+        <th data-th-text="${i.index + 1}">...</th>
+        <td>
+            <a data-th-href="@{/catalogue/words/{slug}(slug=${word.slugWord})}"
+               data-th-text="${word.word}"
+            >
+            </a>
+        </td>
+        <td data-th-text="${word.definition}"></td>
+        <td data-th-text="${word.note}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

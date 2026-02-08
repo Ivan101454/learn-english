@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: view-service
+server:
+  port: 8080

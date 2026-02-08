@@ -1,0 +1,15 @@
+html {
+  font-family: var(--font-family-base), sans-serif;
+}
+
+table {
+  table-layout: fixed;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: center;
+  border: 1px solid var(--color-light-gray);
+}
