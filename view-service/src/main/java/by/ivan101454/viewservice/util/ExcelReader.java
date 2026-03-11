@@ -1,6 +1,7 @@
 package by.ivan101454.viewservice.util;
 
 import by.ivan101454.viewservice.entity.Word;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -15,7 +16,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-@Slf4j
 public class ExcelReader {
 
     public List<Word> readExcelFile() {
@@ -50,7 +50,6 @@ public class ExcelReader {
                 }
                 word.setWordId(UUID.randomUUID());
                 words.add(word);
-                log.info(words.toString());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

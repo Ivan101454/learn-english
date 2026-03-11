@@ -14,8 +14,8 @@ import java.util.UUID;
 public class Word {
 
     private UUID wordId;
-    private String slugWord;
     private String word;
+    private String slugWord;
     private String definition;
     private String note;
 }

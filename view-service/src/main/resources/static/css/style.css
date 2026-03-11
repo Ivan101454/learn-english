@@ -206,12 +206,26 @@ svg * {
   --color-light-gray: #8e8484;
 }
 
+h1 {
+  text-align: center;
+}
+
 html {
   font-family: var(--font-family-base), sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
 table {
-  table-layout: fixed;
+  width: 100%;
+  table-layout: auto;
   margin: 10px auto;
   border-collapse: collapse;
 }

@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -16,5 +18,16 @@ public class DefaultWordService implements WordService {
     @Override
     public List<Word> findAllWords() {
         return wordRepository.findAll();
+    }
+
+    @Override
+    public Word createWord(String word, String definition, String note) {
+        return wordRepository.save(new Word(
+                UUID.randomUUID(), word, word, definition, note));
+    }
+
+    @Override
+    public Optional<Word> findWordBySlugWord(String wordSlug) {
+        return wordRepository.findBySlug(wordSlug);
     }
 }
