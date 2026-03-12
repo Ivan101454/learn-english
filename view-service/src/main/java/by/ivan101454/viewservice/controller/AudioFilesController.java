@@ -2,8 +2,12 @@ package by.ivan101454.viewservice.controller;
 
 import by.ivan101454.viewservice.service.DefaultStorageService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +22,20 @@ public class AudioFilesController {
 
     private final DefaultStorageService defaultStorageService;
 
+    @GetMapping("/{fileName:.+}")
+    public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
+
+        Resource file = defaultStorageService.loadAsResource(fileName);
+
+        if (file == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; fileName=\"" + file.getFilename() + "\"").body(file);
+
+    }
+
     @PostMapping("/upload")
     public ResponseEntity<String> uploadAudioFiles(
             @RequestParam("audioFile") MultipartFile file
@@ -25,7 +43,5 @@ public class AudioFilesController {
         defaultStorageService.store(file);
         return ResponseEntity.ok().build();
     }
-
-
 
 }
