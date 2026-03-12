@@ -32,7 +32,9 @@ public class AudioFilesController {
         }
 
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; fileName=\"" + file.getFilename() + "\"").body(file);
+                "attachment; fileName=\"" + file.getFilename() + "\"")
+                .header(HttpHeaders.CONTENT_TYPE, "audio/webm")
+                .body(file);
 
     }
 
