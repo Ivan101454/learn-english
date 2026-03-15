@@ -12,5 +12,6 @@ import org.springframework.context.annotation.Configuration;
 public class StorageProperties {
 
     private String location;
+    private String defaultName;
 
 }

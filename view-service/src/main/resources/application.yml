@@ -9,3 +9,4 @@ server:
   port: 8080
 storage:
   location: "C:/Users/user/audio"
+  default-name: "recording"

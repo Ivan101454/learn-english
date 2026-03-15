@@ -4,6 +4,7 @@ import by.ivan101454.viewservice.service.DefaultStorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.net.URI;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,6 +47,17 @@ public class AudioFilesController {
     ) {
         defaultStorageService.store(file);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping()
+    public ResponseEntity<Void> giveNameAudioFiles(
+            @RequestParam("fileName") String fileName
+    ) {
+        defaultStorageService.name(fileName);
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .location(URI.create("http://localhost:3000/learn-english-front/vocabulary.html"))
+                .build();
+
     }
 
 }

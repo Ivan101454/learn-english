@@ -3,6 +3,7 @@ package by.ivan101454.viewservice.service;
 import by.ivan101454.viewservice.entity.Word;
 import by.ivan101454.viewservice.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
