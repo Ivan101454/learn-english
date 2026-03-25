@@ -46,7 +46,7 @@ public class AudioFilesController {
             @RequestParam("audioFile") MultipartFile file
     ) {
         defaultStorageService.store(file);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("File uploaded successfully");
     }
 
     @PostMapping()
